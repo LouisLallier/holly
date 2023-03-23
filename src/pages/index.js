@@ -1,5 +1,4 @@
 import Head from "next/head";
-import axios from "axios";
 import { allocineReacteurApi } from "@/utils/apis";
 
 export default function Home({ data }) {
