@@ -20,7 +20,7 @@ export default function Home({ data }) {
               <Link href={`/movies/${movie.id}`} key={movie.id}>
                 <div>{movie.title}</div>
                 <Image
-                  src={`${imagesUrl}${movie.poster_path}`}
+                  src={imagesUrl + movie.poster_path}
                   alt={"none"}
                   width={80}
                   height={120}
