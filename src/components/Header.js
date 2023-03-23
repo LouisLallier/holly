@@ -8,7 +8,7 @@ const Header = () => {
         "flex fixed top-0 w-full justify-evenly items-center border-b border-black py-4"
       }
     >
-      <Image src={logo} alt="logo" width={250} />
+      <Image src={logo} alt="logo" width={250} priority />
       <p className={"text-2xl font-bold"}>Hollywood Boulevard</p>
     </div>
   );

@@ -1,8 +1,10 @@
 import Head from "next/head";
-import { allocineReacteurApi } from "@/utils/apis";
+import { allocineReacteurApi, imagesUrl } from "@/utils/apis";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home({ data }) {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <Head>
@@ -11,6 +13,23 @@ export default function Home({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <main>
+        <div className={"pt-32 flex flex-wrap gap-6"}>
+          {data.map((movie) => {
+            return (
+              <Link href={`/movies/${movie.id}`} key={movie.id}>
+                <div>{movie.title}</div>
+                <Image
+                  src={`${imagesUrl}${movie.poster_path}`}
+                  alt={"none"}
+                  width={80}
+                  height={120}
+                />
+              </Link>
+            );
+          })}
+        </div>
+      </main>
     </>
   );
 }
@@ -18,10 +37,11 @@ export default function Home({ data }) {
 export const getServerSideProps = async () => {
   let dataToSend = [];
   try {
-    const { data } = await allocineReacteurApi.get("/top_rated");
-    console.log("data", data);
+    const { data } = await allocineReacteurApi.get("/movies/top_rated");
+    // console.log("data", data);
+    dataToSend = data.results;
   } catch (error) {
-    console.log(error.message);
+    console.log(error.response.data);
   }
   return {
     props: {

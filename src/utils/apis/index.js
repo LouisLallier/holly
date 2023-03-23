@@ -1,3 +1,3 @@
-import { allocineReacteurApi } from "./allocineReacteurApi";
+import { allocineReacteurApi, imagesUrl } from "./allocineReacteurApi";
 
-export { allocineReacteurApi };
+export { allocineReacteurApi, imagesUrl };
